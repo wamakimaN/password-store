@@ -28,3 +28,9 @@ def save_sitec(site):
     Function to save site credentials
     """
     site.save_site()
+
+def user_login(userName,passWord):
+  """
+  function that checks whether a user exist and then logs in the user.
+  """
+  return Account.acc_exist(userName,passWord)
