@@ -17,11 +17,13 @@ def create_site(sname, suser, skey):
     new_site = Site(sname, suser, skey)
     return new_site
 
+
 def save_account(acc):
     """
     Function to save account
     """
     acc.save_acc()
+
 
 def save_sitec(site):
     """
@@ -29,8 +31,15 @@ def save_sitec(site):
     """
     site.save_site()
 
-def user_login(userName,passWord):
-  """
-  function that checks whether a user exist and then logs in the user.
-  """
-  return Account.acc_exist(userName,passWord)
+
+def user_login(userName, passWord):
+    """
+    function that checks whether an account exist and then logs in the user.
+    """
+    return Account.acc_exist(userName, passWord)
+
+def site_search(name):
+    """
+    function that returns a site acording to name searched
+    """
+    return Site.find_by_name(name)
