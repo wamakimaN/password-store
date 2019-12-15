@@ -108,7 +108,20 @@ class Test_site(unittest.TestCase):
 
         self.new_site.delete_site()  # Deleting a site credentials object
         self.assertEqual(len(Site.site_list), 1)
-    
+
+    def test_find_site_by_name(self):
+        """
+        test to check if we can find a contact by site name and display information
+        """
+
+        self.new_site.save_site()
+        test_site = Site("gmail","Mary","password") # new contact
+        test_site.save_site()
+
+        found_site = Site.find_by_name("gmail")
+
+        self.assertEqual(found_site.pword,test_site.pword)
+
 
 if __name__ == '__main__':
     unittest.main()
