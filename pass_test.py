@@ -26,5 +26,12 @@ class Test_acc(unittest.TestCase):
         """
         Account.acc_list = []
 
+    def test_save_acc(self):
+      """
+      test_save_contact test case to test if the contact object is saved into the contact list
+      """
+      self.new_acc.save_acc()
+      self.assertEqual(len(Account.acc_list),1)
+
 if __name__ == '__main__':
     unittest.main()
