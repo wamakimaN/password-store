@@ -53,6 +53,13 @@ class Site:
         for site in cls.site_list:
             if site.name == name:
                 return site
+
+    @classmethod
+    def display_sites(cls):
+        """
+        method that returns the site credentials list
+        """
+        return cls.site_list
     
 
     

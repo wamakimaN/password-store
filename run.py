@@ -43,3 +43,9 @@ def site_search(name):
     function that returns a site acording to name searched
     """
     return Site.find_by_name(name)
+
+def del_site(site):
+    """
+    function to delete site instances
+    """
+    site.delete_site()
