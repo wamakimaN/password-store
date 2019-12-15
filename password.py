@@ -32,3 +32,9 @@ class Site:
         self.name = name
         self.username = username
         self.pword = pword
+
+    def save_site(self):
+        """
+        save_site method saves account objects into site_list
+        """
+        Site.site_list.append(self)
