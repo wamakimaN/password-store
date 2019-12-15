@@ -9,4 +9,7 @@ class Account:
         self.password = password
 
     def save_acc(self):
-        Account.acc_list.append(self)
+      """
+      save_acc method saves account objects into acc_list
+      """
+      Account.acc_list.append(self)
