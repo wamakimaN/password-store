@@ -17,6 +17,18 @@ class Account:
     @classmethod
     def acc_exist(cls, user_name, password):
         for acc in cls.acc_list:
-          if acc.user_name == user_name and acc.password == password:
-            return True
+            if acc.user_name == user_name and acc.password == password:
+                return True
         return False
+
+
+class Site:
+    """
+    class that generates new instances of account credentials
+    """
+    site_list = []
+
+    def __init__(self, name, username, pword):
+        self.name = name
+        self.username = username
+        self.pword = pword
