@@ -16,3 +16,9 @@ def create_site(sname, suser, skey):
     """
     new_site = Site(sname, suser, skey)
     return new_site
+
+def save_account(acc):
+    """
+    Function to save contact
+    """
+    acc.save_acc()
