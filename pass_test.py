@@ -35,7 +35,7 @@ class Test_acc(unittest.TestCase):
 
     def test_save_multiple_acc(self):
         """
-        test_save_multiple_contact to check if we can save multiple contact
+        test_save_multiple_acc to check if we can save multiple account
         objects to our acc_list
         """
         self.new_acc.save_acc()
@@ -45,7 +45,7 @@ class Test_acc(unittest.TestCase):
 
     def test_acc_exists(self):
         """
-        test to check if we can return a Boolean  if we cannot find the contact.
+        test to check if we can return a Boolean  if we cannot find the account.
         """
         self.new_acc.save_acc()
         test_acc= Account("moses","1234")
