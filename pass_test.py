@@ -1,6 +1,5 @@
 import unittest
-from password import Account
-
+from password import *
 
 class Test_acc(unittest.TestCase):
     """
@@ -54,6 +53,23 @@ class Test_acc(unittest.TestCase):
         acc_exists = Account.acc_exist("moses","1234")
 
         self.assertTrue(acc_exists)
+
+class Test_site(unittest.TestCase):
+    """
+    Test class that defines test cases for the site class behaviours.
+    """
+    def setUp(self):
+        """
+        set up method to run before each test case.
+        """
+        self.new_site = Site("twitter","ngugi","asdf")        
+    def test_init(self):
+        """
+        to test if the object is initialized properly
+        """
+        self.assertEqual(self.new_site.name,"twitter")
+        self.assertEqual(self.new_site.username, "ngugi")
+        self.assertEqual(self.new_site.pword, "asdf")
 
 if __name__ == '__main__':
     unittest.main()
