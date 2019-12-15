@@ -1,6 +1,7 @@
 import unittest
 from password import *
 
+
 class Test_acc(unittest.TestCase):
     """
     Test class that defines test cases for the account class behaviours.
@@ -47,30 +48,33 @@ class Test_acc(unittest.TestCase):
         test to check if we can return a Boolean  if we cannot find the account.
         """
         self.new_acc.save_acc()
-        test_acc= Account("moses","1234")
+        test_acc = Account("moses", "1234")
         test_acc.save_acc()
 
-        acc_exists = Account.acc_exist("moses","1234")
+        acc_exists = Account.acc_exist("moses", "1234")
 
         self.assertTrue(acc_exists)
+
 
 class Test_site(unittest.TestCase):
     """
     Test class that defines test cases for the site class behaviours.
     """
+
     def setUp(self):
         """
         set up method to run before each test case.
         """
-        self.new_site = Site("twitter","ngugi","asdf")        
+        self.new_site = Site("twitter", "ngugi", "asdf")
+
     def test_init(self):
         """
         to test if the object is initialized properly
         """
-        self.assertEqual(self.new_site.name,"twitter")
+        self.assertEqual(self.new_site.name, "twitter")
         self.assertEqual(self.new_site.username, "ngugi")
         self.assertEqual(self.new_site.pword, "asdf")
-    
+
     def tearDown(self):
         """
         Method that cleans up after each case has run.
@@ -90,10 +94,20 @@ class Test_site(unittest.TestCase):
         objects to our site_list
         """
         self.new_site.save_site()
-        test_site = Site("uber", "peter","yuiop")  # new site
+        test_site = Site("uber", "peter", "yuiop")  # new site
         test_site.save_site()
         self.assertEqual(len(Site.site_list), 2)
 
+    def test_delete_site(self):
+        """
+        test_delete_site to test if we can remove site credentials from our site list
+        """
+        self.new_site.save_site()
+        test_site = Site("Test", "user", "0712345678")  # new site credentials
+        test_site.save_site()
+
+        self.new_site.delete_site()  # Deleting a site credentials object
+        self.assertEqual(len(Site.site_list), 1)
     
 
 if __name__ == '__main__':

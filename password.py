@@ -44,6 +44,15 @@ class Site:
         delete_site method deletes a saved site credentials from the site_list          
         """
         Site.site_list.remove(self)
+
+    @classmethod
+    def find_by_name(cls,name):
+        """
+        Method that takes in a name and returns a contact that matches that name.
+        """
+        for site in cls.site_list:
+            if site.name == name:
+                return site
     
 
     
