@@ -77,5 +77,12 @@ class Test_site(unittest.TestCase):
         """
         Site.site_list = []
 
+    def test_save_site(self):
+        """
+        test_save_site test case to test if the credentials object is saved into the site list
+        """
+        self.new_site.save_site()
+        self.assertEqual(len(Site.site_list), 1)
+
 if __name__ == '__main__':
     unittest.main()

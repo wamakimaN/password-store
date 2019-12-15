@@ -38,3 +38,5 @@ class Site:
         save_site method saves account objects into site_list
         """
         Site.site_list.append(self)
+
+    
