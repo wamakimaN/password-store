@@ -84,5 +84,16 @@ class Test_site(unittest.TestCase):
         self.new_site.save_site()
         self.assertEqual(len(Site.site_list), 1)
 
+    def test_save_multiple_acc(self):
+        """
+        test_save_multiple_acc to check if we can save multiple account
+        objects to our acc_list
+        """
+        self.new_site.save_site()
+        test_site = Site("uber", "peter","yuiop")  # new site
+        test_site.save_site()
+        self.assertEqual(len(Site.site_list), 2)
+
+
 if __name__ == '__main__':
     unittest.main()
