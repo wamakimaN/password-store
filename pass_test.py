@@ -122,6 +122,13 @@ class Test_site(unittest.TestCase):
 
         self.assertEqual(found_site.pword,test_site.pword)
 
+    def test_display_all_sites(self):
+        """
+        method that returns a list of all site credentials saved
+        """
 
+        self.assertEqual(Site.display_sites(),Site.site_list)
+
+        
 if __name__ == '__main__':
     unittest.main()
