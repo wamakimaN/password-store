@@ -20,6 +20,11 @@ class Test_acc(unittest.TestCase):
         self.assertEqual(self.new_acc.user_name, "wamakima")
         self.assertEqual(self.new_acc.password, "qwerty456")
 
+    def tearDown(self):
+        """
+        Method that cleans up after each case has run.
+        """
+        Account.acc_list = []
 
 if __name__ == '__main__':
     unittest.main()
