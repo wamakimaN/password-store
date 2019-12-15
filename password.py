@@ -39,7 +39,11 @@ class Site:
         """
         Site.site_list.append(self)
     
-    
+    def delete_site(self):
+        """
+        delete_site method deletes a saved site credentials from the site_list          
+        """
+        Site.site_list.remove(self)
     
 
     
