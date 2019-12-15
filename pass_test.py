@@ -43,6 +43,17 @@ class Test_acc(unittest.TestCase):
         test_acc.save_acc()
         self.assertEqual(len(Account.acc_list), 2)
 
+    def test_acc_exists(self):
+        """
+        test to check if we can return a Boolean  if we cannot find the contact.
+        """
+        self.new_acc.save_acc()
+        test_acc= Account("moses","1234")
+        test_acc.save_acc()
+
+        acc_exists = Account.acc_exist("moses","1234")
+
+        self.assertTrue(acc_exists)
 
 if __name__ == '__main__':
     unittest.main()
