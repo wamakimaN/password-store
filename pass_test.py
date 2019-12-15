@@ -70,6 +70,12 @@ class Test_site(unittest.TestCase):
         self.assertEqual(self.new_site.name,"twitter")
         self.assertEqual(self.new_site.username, "ngugi")
         self.assertEqual(self.new_site.pword, "asdf")
+    
+    def tearDown(self):
+        """
+        Method that cleans up after each case has run.
+        """
+        Site.site_list = []
 
 if __name__ == '__main__':
     unittest.main()
