@@ -87,7 +87,7 @@ def main():
                 print(f"Welcome {username}. What would you like to do?")
                 while True:
                     print("-"*70)
-                    short_code = input("Use the following short codes: as - add site credentials, da - display all credentials, sc - search credentials, ex - exit Pass Locker \n").lower().strip()
+                    short_code = input("Use the following short codes: as - add site credentials, dc - delete credentials, da - display all credentials, sc - search credentials, ex - exit Pass Locker \n").lower().strip()
                     print("."*75)
                     if short_code == "as":
                         print("Enter new site credentials")
@@ -102,7 +102,13 @@ def main():
                          for site in display_sites():
                            print(f"site:{site.name} \n User Name:{site.username} \n Password:{site.pword}\n")
 
-                    elif 
+                    elif short_code == "dc":
+                        print("Enter the name of the site you want to delete:")
+                        delete_name = input("Site name: ")
+                        if site_search(delete_name):
+                            delete_site = site_search(delete_name)
+                            del_site(delete_site)
+
 
             else:
                 print("Details did not match any user...Create account?")
