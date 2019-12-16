@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+import getpass
 from password import *
 
 
@@ -65,7 +66,8 @@ def main():
     print("\n")
     while True:
         print("-"*70)
-        short_code = input("Use the following short codes: ca - Create account, lg - login to your account(if you have one), ex - exit Pass Locker \n").lower().strip()
+        short_code = input(
+            "Use the following short codes: ca - Create account, lg - login to your account(if you have one), ex - exit Pass Locker \n").lower().strip()
         print("."*75)
 
         if short_code == "ca":
@@ -81,26 +83,31 @@ def main():
         elif short_code == "lg":
             print("Log In")
             username = input("User Name: ")
-            passwrd = input("Password: ")
-            signin =  user_login(username,passwrd)
-            if signin == True :
+            passwrd = getpass.getpass()
+            signin = user_login(username, passwrd)
+            if signin == True:
                 print(f"Welcome {username}. What would you like to do?")
                 while True:
                     print("-"*70)
-                    short_code = input("Use the following short codes: as - add site credentials, dc - delete credentials, da - display all credentials, sc - search credentials, ex - exit Pass Locker \n").lower().strip()
+                    short_code = input(
+                        "Use the following short codes: as - add site credentials, dc - delete credentials, da - display all credentials, sc - search credentials, ex - exit Pass Locker \n").lower().strip()
                     print("."*75)
                     if short_code == "as":
                         print("Enter new site credentials")
-                        sitename = input("Site name: ") 
+                        sitename = input("Site name: ")
                         siteuser = input("User name: ")
-                        sitepass = input ("password: ")
-                        save_sitec(create_site(sitename,siteuser,sitepass))
-                        print(f"New created account: \n Account:{sitename}\n User Name:{siteuser} \n Password: {sitepass}")
+                        sitepass = input("password: ")
+                        save_sitec(create_site(sitename, siteuser, sitepass))
+                        print(
+                            f"New created account: \n Account:{sitename}\n User Name:{siteuser} \n Password: {sitepass}")
 
                     elif short_code == "da":
-                       if display_sites():
-                         for site in display_sites():
-                           print(f"site:{site.name} \n User Name:{site.username} \n Password:{site.pword}\n")
+                        if display_sites():
+                            for site in display_sites():
+                                print(
+                                    f"site:{site.name} \n User Name:{site.username} \n Password:{site.pword}\n")
+                        else:
+                            print("You do not seem to have anything saved yet")
 
                     elif short_code == "dc":
                         print("Enter the name of the site you want to delete:")
@@ -108,16 +115,19 @@ def main():
                         if site_search(delete_name):
                             delete_site = site_search(delete_name)
                             del_site(delete_site)
+                        else:
+                            print("Enter valid name")
 
                     elif short_code == "sc":
                         print("Enter the name of the site you want to view:")
                         search_name = input("Site name: ")
                         if site_search(search_name):
-                          search_site = site_search(search_name)
-                          print(f"Site name....{search_site.name}")
-                          print(f"User name....{search_site.username}")
-                          print(f"Password....{search_site.pword}")
-
+                            search_site = site_search(search_name)
+                            print(f"Site name....{search_site.name}")
+                            print(f"User name....{search_site.username}")
+                            print(f"Password....{search_site.pword}")
+                        else:
+                            print("Enter valid name")
 
             else:
                 print("Details did not match any user...Create account?")
@@ -125,6 +135,7 @@ def main():
         elif short_code == "ex":
             print("You have successfully exited Pass Locker")
             break
+
 
 if __name__ == '__main__':
 
