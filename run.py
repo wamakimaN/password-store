@@ -115,6 +115,7 @@ def main():
                         if site_search(delete_name):
                             delete_site = site_search(delete_name)
                             del_site(delete_site)
+                            print(f"{delete_site.name} credentials have been deleted")
                         else:
                             print("Enter valid name")
 
