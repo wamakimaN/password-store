@@ -1,5 +1,5 @@
 import unittest
-from password import *
+from password import Account, Site
 
 
 class Test_acc(unittest.TestCase):

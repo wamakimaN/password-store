@@ -1,3 +1,6 @@
+import random
+import string
+
 class Account:
     """
     class that generates new instances of user accounts
@@ -38,15 +41,15 @@ class Site:
         save_site method saves account objects into site_list
         """
         Site.site_list.append(self)
-    
+
     def delete_site(self):
         """
-        delete_site method deletes a saved site credentials from the site_list          
+        delete_site method deletes a saved site credentials from the site_list
         """
         Site.site_list.remove(self)
 
     @classmethod
-    def find_by_name(cls,name):
+    def find_by_name(cls, name):
         """
         Method that takes in a name and returns a contact that matches that name.
         """
@@ -60,6 +63,10 @@ class Site:
         method that returns the site credentials list
         """
         return cls.site_list
-    
+    def generate_password():
+        char = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        gen_pass = "".join(random.choice(char) for _ in range(8))
+
+        return gen_pass
 
     

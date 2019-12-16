@@ -1,6 +1,8 @@
 #!/usr/bin/env python3.6
+import random
+import string
 import getpass
-from password import *
+from password import Account, Site
 
 
 def create_acc(user, key):
@@ -60,6 +62,14 @@ def display_sites():
     """
     return Site.display_sites()
 
+def generate_password():
+    """
+    Function that generates random password.
+    """
+  
+    password_gen = Site.generate_password()
+    return password_gen
+
 
 def main():
     print("Welcome to Pass Locker")
@@ -90,18 +100,32 @@ def main():
                 while True:
                     print("-"*70)
                     short_code = input(
-                        "Use the following short codes: as - add site credentials, dc - delete credentials, da - display all credentials, sc - search credentials, ex - exit Pass Locker \n").lower().strip()
+                        "Use the following short codes: as - add site credentials, dc - delete credentials, ds - display all credentials, sc - search credentials, ex - exit Pass Locker \n").lower().strip()
                     print("."*75)
                     if short_code == "as":
                         print("Enter new site credentials")
                         sitename = input("Site name: ")
                         siteuser = input("User name: ")
-                        sitepass = input("password: ")
+                        pass_option = input(
+                            "Would you like to: (ue : use existing password) or (gp : generate new password) \n")
+                        print("-"*75)
+                        while True:
+                          if pass_option == "ue":
+                              print(" ")
+                              sitepass = input("password: ").strip()
+                              break
+                          elif pass_option == 'gp':
+                              sitepass = generate_password()
+                              break
+
+                          elif pass_option == 'ex':
+                              break
+
                         save_sitec(create_site(sitename, siteuser, sitepass))
                         print(
                             f"New created account: \n Account:{sitename}\n User Name:{siteuser} \n Password: {sitepass}")
 
-                    elif short_code == "da":
+                    elif short_code == "ds":
                         if display_sites():
                             for site in display_sites():
                                 print(
@@ -115,7 +139,8 @@ def main():
                         if site_search(delete_name):
                             delete_site = site_search(delete_name)
                             del_site(delete_site)
-                            print(f"{delete_site.name} credentials have been deleted")
+                            print(
+                                f"{delete_site.name} credentials have been deleted")
                         else:
                             print("Enter valid name")
 
