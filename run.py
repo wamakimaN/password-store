@@ -109,6 +109,15 @@ def main():
                             delete_site = site_search(delete_name)
                             del_site(delete_site)
 
+                    elif short_code == "sc":
+                        print("Enter the name of the site you want to view:")
+                        search_name = input("Site name: ")
+                        if site_search(search_name):
+                          search_site = site_search(search_name)
+                          print(f"Site name....{search_site.name}")
+                          print(f"User name....{search_site.username}")
+                          print(f"Password....{search_site.pword}")
+
 
             else:
                 print("Details did not match any user...Create account?")
